@@ -1,0 +1,229 @@
+/**
+ * Block Editor Styles (wp-admin editor only)
+ * These styles are loaded ONLY in the Gutenberg editor, not on frontend
+ */
+
+/* Editor container padding */
+.wp-block {
+    max-width: 100%;
+}
+
+.editor-styles-wrapper {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #222;
+}
+
+/* Paragraph styles in editor */
+.editor-styles-wrapper p {
+    margin-bottom: 1em;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* Heading styles in editor */
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    color: #222;
+}
+
+.editor-styles-wrapper h1 { font-size: 2.5em; }
+.editor-styles-wrapper h2 { font-size: 2em; }
+.editor-styles-wrapper h3 { font-size: 1.5em; }
+.editor-styles-wrapper h4 { font-size: 1.25em; }
+.editor-styles-wrapper h5 { font-size: 1.1em; }
+.editor-styles-wrapper h6 { font-size: 1em; }
+
+/* List styles in editor */
+.editor-styles-wrapper ul,
+.editor-styles-wrapper ol {
+    margin-bottom: 1em;
+    margin-left: 1.5em;
+    padding: 0;
+}
+
+.editor-styles-wrapper li {
+    margin-bottom: 0.5em;
+    line-height: 1.6;
+}
+
+/* Blockquote in editor */
+.editor-styles-wrapper blockquote {
+    border-left: 4px solid #999;
+    padding: 1em 1.5em;
+    margin: 1em 0;
+    font-style: italic;
+    color: #555;
+    background: transparent;
+}
+
+.wp-block-quote {
+    margin: 1em 0;
+    padding: 1em 1.5em;
+    border-left: 4px solid #999;
+    background: transparent;
+}
+
+/* Code block in editor */
+.wp-block-code {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 1em 0;
+    padding: 1em;
+    overflow-x: auto;
+}
+
+.wp-block-code code {
+    background: transparent;
+    color: #333;
+    font-size: inherit;
+}
+
+/* Image block in editor */
+.wp-block-image {
+    margin: 1em 0;
+}
+
+.wp-block-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Table in editor */
+.wp-block-table {
+    margin: 1em 0;
+}
+
+.wp-block-table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.wp-block-table td,
+.wp-block-table th {
+    border: 1px solid #ddd;
+    padding: 0.75em;
+    text-align: left;
+}
+
+.wp-block-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+/* Button in editor */
+.wp-block-button__link {
+    background-color: #32373c;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 0.6em 1.2em;
+    text-decoration: none;
+}
+
+.wp-block-button__link:hover {
+    opacity: 0.9;
+}
+
+/* Separator in editor */
+.wp-block-separator {
+    background-color: #e5e5e5;
+    border: none;
+    height: 2px;
+    margin: 2em 0;
+}
+
+/* Columns in editor */
+.wp-block-columns {
+    display: grid;
+    gap: 1em;
+    margin: 1em 0;
+}
+
+/* Link styles in editor */
+.editor-styles-wrapper a {
+    color: #0073aa;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.editor-styles-wrapper a:hover {
+    color: #005a87;
+}
+
+/* Wide and full alignment in editor */
+.wp-block-image.alignwide,
+.wp-block-gallery.alignwide {
+    margin-left: -60px;
+    margin-right: -60px;
+    width: calc(100% + 120px);
+}
+
+.wp-block-image.alignfull,
+.wp-block-gallery.alignfull {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+}
+
+/* Alignment helpers */
+.editor-styles-wrapper .aligncenter {
+    text-align: center;
+}
+
+.editor-styles-wrapper .alignleft {
+    float: left;
+    margin-right: 1em;
+}
+
+.editor-styles-wrapper .alignright {
+    float: right;
+    margin-left: 1em;
+}
+
+/* Gallery block */
+.wp-block-gallery {
+    margin: 1em 0;
+}
+
+/* Embed block */
+.wp-block-embed {
+    margin: 1em 0;
+}
+
+.wp-block-embed iframe {
+    max-width: 100%;
+}
+
+/* Group block */
+.wp-block-group {
+    margin: 1em 0;
+}
+
+/* Cover block */
+.wp-block-cover {
+    margin: 1em 0;
+    min-height: 430px;
+}
+
+/* Media + Text block */
+.wp-block-media-text {
+    display: flex;
+    margin: 1em 0;
+    gap: 1em;
+    align-items: center;
+}

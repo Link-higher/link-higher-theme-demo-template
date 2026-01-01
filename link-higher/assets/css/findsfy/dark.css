@@ -1,0 +1,170 @@
+/* dark.css  (ONLY dark-mode overrides) */
+
+/* Theme variables override */
+body.dark {
+  --bg: #0b1220;
+  --nav-bg: #191F2D;
+  --text: #f2f5ff;
+  --border: rgba(255, 255, 255, 0.12);
+
+  --nav-dark-1: #061021;
+  --nav-dark-2: #040b16;
+
+  --side-bg: #0f172a;
+  --side-text: #f2f5ff;
+
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --overlay-from: rgba(0, 0, 0, 0);
+  --overlay-to: rgba(0, 0, 0, 0.78);
+  --title: #ffffff;
+  --muted: rgba(255, 255, 255, 0.88);
+
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-2: rgba(255, 255, 255, 0.04);
+  --stroke: rgba(255, 255, 255, 0.1);
+  --text-1: #f2f5ff;
+  --text-2: rgba(242, 245, 255, 0.78);
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+
+  --tileBg: rgba(255, 255, 255, 0.06);
+  --tileStroke: rgba(255, 255, 255, 0.1);
+  --tileShadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+
+  --cp-surface: rgba(255, 255, 255, 0.06);
+  --cp-surface2: rgba(255, 255, 255, 0.04);
+  --cp-stroke: rgba(255, 255, 255, 0.12);
+  --cp-text: #f2f5ff;
+  --cp-muted: rgba(242, 245, 255, 0.75);
+  --cp-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+
+  --bc-bg: var(--cp-surface);
+  --bc-stroke: var(--cp-stroke);
+  --bc-text: var(--cp-muted);
+  --bc-link: var(--cp-text);
+  --bc-active: #ffffff;
+
+}
+
+/* Top header border */
+body.dark .saanno-lh-top-header {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Social icons */
+body.dark .saanno-lh-social-row a {
+  color: #ffffff !important;
+}
+body.dark .saanno-lh-social-row a:hover {
+  opacity: 0.85;
+}
+
+/* Dark mode */
+body.dark .saanno-lh-spotlight-carousel .saanno-lh-spotlight-nav-btn {
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+  color: #fff;
+}
+
+/* Date text */
+body.dark .date-time,
+body.dark #dateText {
+  color: #ffffff !important;
+}
+
+/* Time chip */
+body.dark .time-chip {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* Sidebar theme */
+body.dark .saanno-lh-side-menu {
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+body.dark .saanno-lh-side-menu a {
+  color: var(--side-text);
+}
+body.dark .saanno-lh-side-menu a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Sidebar header */
+body.dark .saanno-lh-side-menu-head {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+body.dark .saanno-lh-side-close {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Toggle knob icon visibility (optional) */
+body.dark .saanno-lh-mode-knob {
+  color: #0b0b0b;
+}
+
+/* Logo brightness (optional) */
+body.dark .saanno-lh-brand-logo-img,
+body.dark .saanno-lh-side-logo-img {
+  filter: brightness(1.1);
+}
+
+body.dark .saanno-lh-post-card {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Dark mode safe */
+body.dark .saanno-lh-post-meta-item{
+  color: rgba(242,245,255,.75);
+}
+
+body.dark .side-tab.active{
+  background: rgba(255,255,255,.08);
+}
+
+body.dark .follow-tile{
+  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+}
+
+
+/* Dark mode tweaks (optional) */
+body.dark .saanno-lh-scroll-top-btn {
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45);
+}
+
+body.dark .saanno-lh-grid-post{ box-shadow: 0 18px 36px rgba(0,0,0,.28); }
+.saanno-lh-grid-post img{
+  width:100%;
+  height: 170px;
+  object-fit: cover;
+  display:block;
+}
+
+body.dark .cp-breadcrumb .breadcrumb {
+	background: var(--bs-link-hover-color-rgb);
+}
+
+body.dark .saanno-lh-nav-pill {
+	background: var(--tileBg);
+}
+
+body.dark .saanno-lh-main-nav-wrap.is-sticky .saanno-lh-nav-pill {
+	background: var(--nav-bg) !important;
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+	border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.dark .saanno-lh-main-nav-wrap.is-sticky .saanno-lh-nav-links a {
+	color: var(--text) !important;
+}
+
+.saanno-lh-footer-secondary, .saanno-lh-footer-main {
+	background: var(--nav-bg) !important;
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+/* Dark mode tweak */
+body.dark .saanno-lh-pagination .pagination .page-link {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.32);
+}

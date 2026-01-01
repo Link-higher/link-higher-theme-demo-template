@@ -1,0 +1,202 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.3/theme.json",
+  "version": 2,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "color": "#222222",
+          "name": "Text",
+          "slug": "text"
+        },
+        {
+          "color": "#e3006e",
+          "name": "Accent",
+          "slug": "accent"
+        },
+        {
+          "color": "#ffffff",
+          "name": "White",
+          "slug": "white"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "Arial, Helvetica, sans-serif",
+          "name": "System Font",
+          "slug": "system"
+        }
+      ],
+      "fontSize": [
+        {
+          "size": "0.875rem",
+          "name": "Small",
+          "slug": "small"
+        },
+        {
+          "size": "1rem",
+          "name": "Base",
+          "slug": "base"
+        },
+        {
+          "size": "1.25rem",
+          "name": "Large",
+          "slug": "large"
+        },
+        {
+          "size": "1.5rem",
+          "name": "Extra Large",
+          "slug": "xl"
+        },
+        {
+          "size": "2rem",
+          "name": "2XL",
+          "slug": "2xl"
+        }
+      ]
+    },
+    "spacing": {
+      "blockGap": true,
+      "margin": true,
+      "padding": true,
+      "spacingSizes": [
+        {
+          "size": "0.5rem",
+          "name": "Small",
+          "slug": "small"
+        },
+        {
+          "size": "1rem",
+          "name": "Medium",
+          "slug": "medium"
+        },
+        {
+          "size": "1.5rem",
+          "name": "Large",
+          "slug": "large"
+        },
+        {
+          "size": "2rem",
+          "name": "Extra Large",
+          "slug": "xl"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontSize": "1rem",
+      "lineHeight": "1.6",
+      "fontFamily": "Arial, Helvetica, sans-serif"
+    },
+    "elements": {
+      "button": {
+        "border": {
+          "radius": "5px"
+        },
+        "padding": {
+          "top": "0.6rem",
+          "right": "1.2rem",
+          "bottom": "0.6rem",
+          "left": "1.2rem"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "#0073aa"
+        },
+        ":hover": {
+          "color": {
+            "text": "#005a87"
+          }
+        }
+      }
+    },
+    "blocks": {
+      "core/paragraph": {
+        "spacing": {
+          "margin": {
+            "bottom": "1em"
+          }
+        },
+        "typography": {
+          "fontSize": "1em",
+          "lineHeight": "1.6"
+        }
+      },
+      "core/heading": {
+        "spacing": {
+          "margin": {
+            "top": "0.5em",
+            "bottom": "0.5em"
+          }
+        },
+        "typography": {
+          "fontWeight": "600"
+        }
+      },
+      "core/list": {
+        "spacing": {
+          "margin": {
+            "bottom": "1em"
+          },
+          "padding": {
+            "left": "1.5em"
+          }
+        }
+      },
+      "core/quote": {
+        "border": {
+          "left": {
+            "color": "#999999",
+            "width": "4px"
+          }
+        },
+        "padding": {
+          "left": "1.5em",
+          "top": "1em",
+          "bottom": "1em",
+          "right": "1.5em"
+        },
+        "spacing": {
+          "margin": {
+            "top": "1em",
+            "bottom": "1em"
+          }
+        }
+      },
+      "core/image": {
+        "spacing": {
+          "margin": {
+            "top": "1em",
+            "bottom": "1em"
+          }
+        }
+      },
+      "core/table": {
+        "spacing": {
+          "margin": {
+            "top": "1em",
+            "bottom": "1em"
+          }
+        }
+      },
+      "core/code": {
+        "spacing": {
+          "margin": {
+            "top": "1em",
+            "bottom": "1em"
+          },
+          "padding": {
+            "top": "1em",
+            "right": "1em",
+            "bottom": "1em",
+            "left": "1em"
+          }
+        }
+      }
+    }
+  }
+}

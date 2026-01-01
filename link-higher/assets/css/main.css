@@ -1,0 +1,2640 @@
+:root {
+  --ms-pink: #e3006e;
+  --ms-text: #222222;
+  --ms-muted: #777777;
+  --ms-bg: #f9f4f8;
+}
+
+/* Reset / base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Lora', serif;
+  background: #f5f5f5;
+}
+
+.lh-container {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.lh-container-fluid {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ============================================
+   GLOBAL LINK STYLES - FOR NON-CONTENT AREAS
+   ============================================
+   These are the DEFAULT link styles for:
+   - Navigation menus
+   - Post titles
+   - Footer links
+   - Other page elements
+   
+   POST CONTENT LINKS are controlled separately 
+   via Customizer and override these styles
+   ============================================ */
+
+/* Default link style for elements OUTSIDE post content */
+a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* Featured section er shob link white */
+.lh-featured-section .lh-story-card__overlay a {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+/* Hover korle underline ashbe */
+.lh-featured-section .lh-story-card__overlay a:hover {
+	text-decoration: none !important;
+	color: #c9c9c9 !important;
+}
+
+a:visited {
+  color: #16416F;
+}
+
+a:hover,
+a:focus {
+  color: #005a87;
+  text-decoration-thickness: 2px;
+}
+
+a:focus {
+  outline-offset: 2px;
+}
+
+/* ==================================
+   HEADER WRAPPER
+===========================================*/
+.lh-site-header {
+  border-top: 2px solid #eee5cf;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ==================================
+   INNER HEADER
+===========================================*/
+.lh-header-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 10px 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap; /* logo + nav mobile এ নিচে যাবে */
+}
+
+.entry-content a {
+	text-decoration: none !important;
+	transition: color 0.2s ease;
+}
+
+/* ==================================
+   LOGO
+===========================================*/
+.lh-logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Ensure WordPress uploaded custom logo fits and doesn't break layout */
+.lh-logo,
+.lh-logo-link,
+.custom-logo-link {
+  display: block;
+  max-width: 320px; /* prevent an overly wide logo from pushing the menu */
+}
+
+.lh-logo img,
+.lh-logo .custom-logo,
+.custom-logo-link img {
+  height: 50px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Allow a slightly larger logo on desktop while keeping height fixed */
+@media (min-width: 1200px) {
+  .lh-logo img,
+  .lh-logo .custom-logo,
+  .custom-logo-link img { height: 60px; }
+}
+
+/* ==================================
+   NAVIGATION
+===========================================*/
+.lh-main-nav {
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
+.lh-main-nav .lh-menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.lh-main-nav a {
+	font-size: 14px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #222;
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+.lh-main-nav a:hover {
+  color: #f26c1a;
+}
+
+/* ==================================
+   SUBMENU (WORDPRESS)
+===========================================*/
+.menu-item-has-children {
+  position: relative;
+}
+
+.lh-main-nav .sub-menu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  padding: 0;
+  z-index: 20;
+}
+
+.lh-main-nav .sub-menu li a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 13px;
+  text-transform: uppercase;
+  border-bottom: 1px dashed #ddd;
+  color: #444;
+}
+
+.lh-main-nav .sub-menu li:last-child a {
+  border-bottom: none;
+}
+
+/* Desktop submenu hover */
+@media (min-width: 769px) {
+  .menu-item-has-children:hover > .sub-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .menu-item-has-children > a::after {
+    content: " ▾";
+    font-size: 10px;
+    margin-left: 4px;
+  }
+}
+
+/* ==================================
+   MOBILE NAV (HAMBURGER)
+===========================================*/
+.lh-nav-toggle {
+  display: none;
+}
+
+.lh-nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  width: 28px;
+  height: 20px;
+  position: relative;
+}
+
+.lh-nav-toggle-label span,
+.lh-nav-toggle-label span::before,
+.lh-nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #333;
+  transition: all 0.2s;
+}
+
+.lh-nav-toggle-label span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lh-nav-toggle-label span::before { top: -7px; }
+.lh-nav-toggle-label span::after { top: 7px; }
+
+/* toggle → X */
+.lh-nav-toggle:checked + .lh-nav-toggle-label span {
+  transform: rotate(45deg);
+}
+.lh-nav-toggle:checked + .lh-nav-toggle-label span::before {
+  top: 0;
+  transform: rotate(-90deg);
+}
+.lh-nav-toggle:checked + .lh-nav-toggle-label span::after {
+  opacity: 0;
+}
+
+/* ==================================
+   MOBILE NAVIGATION
+===========================================*/
+@media (max-width: 768px) {
+
+  .lh-main-nav {
+    width: 100%;
+    order: 99;
+  }
+
+  .lh-main-nav .lh-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    display: none;  /* default hidden */
+    width: 100%;
+  }
+
+  /* mobile menu open */
+  .lh-nav-toggle:checked ~ nav .lh-menu {
+    display: flex;
+  }
+
+  /* SHOW hamburger */
+  .lh-nav-toggle-label {
+    display: block;
+  }
+
+  /* mobile submenu always stacked */
+  /* hide mobile submenus by default; JS will toggle `.active` on the parent */
+  .lh-main-nav .sub-menu {
+    position: static;
+    display: none; /* hidden until toggled */
+    transform: none;
+    pointer-events: auto;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding-left: 15px;
+    margin-top: 4px;
+  }
+
+  /* show when parent menu item has `.active` (toggled by JS) */
+  .menu-item-has-children.active > .sub-menu,
+  .menu-item-has-children > .sub-menu.active {
+    display: block;
+  }
+
+  .menu-item-has-children > a::after {
+    content: " ▾";
+    float: right;
+  }
+}
+
+/* Submenu toggle button styling */
+.lh-submenu-toggle {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 6px;
+  margin-left: 8px;
+  color: inherit;
+  cursor: pointer;
+}
+.lh-submenu-toggle:focus { outline: 2px solid rgba(0,0,0,0.12); border-radius: 3px; }
+
+/* Hide helper text for screen readers only */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* Position submenu toggle on mobile and avoid layout break */
+@media (max-width: 768px) {
+  .lh-main-nav .lh-menu li { position: relative; }
+  .lh-main-nav a { padding-right: 44px; position: relative; }
+  .lh-submenu-toggle {
+      position: absolute;
+      left: 100% !important;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 2px 20px;
+      font-size: 22px;
+      background: transparent !important;
+      border: none !important;
+      -webkit-appearance: none;
+      appearance: none;
+      min-width: unset;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: none;
+      z-index: 999;
+      cursor: pointer;
+  }
+
+  /* Ensure mobile submenus are clearly visible and readable */
+  .menu-item-has-children > .sub-menu {
+    display: none; /* default off */
+    background: #ffffff;
+    width: 100%;
+    padding-left: 12px;
+    margin: 6px 0 12px;
+    border: none;
+    box-shadow: none;
+    z-index: 40;
+  }
+
+  .menu-item-has-children.active > .sub-menu {
+    display: block !important;
+  }
+
+  .lh-main-nav .sub-menu li a {
+    color: #222 !important;
+    background: transparent;
+    padding: 10px 16px;
+  }
+
+  /* Hide any pseudo caret added on the anchor to avoid duplicate arrows */
+  .menu-item-has-children > a::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+/* STRONG OVERRIDE: ensure submenu is visible and readable on mobile
+   (temporary: keeps precedence over other styles) */
+.lh-main-nav .menu-item-has-children.active > .sub-menu,
+.lh-main-nav .menu-item-has-children > .sub-menu.active {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  pointer-events: auto !important;
+  background: #ffffff !important;
+  color: #222 !important;
+  z-index: 9999 !important;
+}
+
+.lh-main-nav .menu-item-has-children > .sub-menu li a {
+  color: #111 !important;
+  display: block !important;
+  padding: 10px 16px !important;
+  border-bottom: 1px dashed #e6e6e6 !important;
+}
+
+.lh-main-nav .menu-item-has-children > .sub-menu li:last-child a {
+  border-bottom: none !important;
+}
+
+/* Make sure submenus don't collapse to zero height */
+.lh-main-nav .sub-menu { min-height: 20px !important; }
+
+/* Hide the toggle on desktop since hover is used */
+@media (min-width: 769px) {
+  .lh-submenu-toggle { display: none; }
+}
+
+
+/* ==================================
+   Right: social + newsletter
+===========================================*/
+.lh-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  flex: 0 0 auto;               /* NEW: fixed-width block, nav এর সাথে overlap করবে না */
+}
+
+.lh-socials {
+  display: flex;
+  gap: 8px;
+}
+
+.lh-social-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid #e0e0e0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #f26c1a;
+}
+.lh-social-circle:hover {
+  background: #f26c1a;
+  color: #ffffff;
+  border-color: #f26c1a;
+}
+
+.lh-newsletter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 0;
+  padding: 6px 16px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.lh-newsletter-btn span.lh-icon {
+  color: #f26c1a;
+  font-size: 15px;
+}
+.lh-newsletter-btn:hover {
+  background: #f26c1a;
+  color: #ffffff;
+  border-color: #f26c1a;
+}
+.lh-newsletter-btn:hover .lh-icon {
+  color: #ffffff;
+}
+
+/* ==================================
+    Featured layout wrapper 
+  ===================================*/
+
+.lh-featured-section {
+  margin: 32px auto;
+}
+
+.lh-featured-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: stretch; /* সব কার্ড সমানভাবে টানবে */
+}
+
+/* ---- Card base ---- */
+.lh-story-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* সব image যেন card-এর height অনুযায়ী adjust হয় */
+.lh-story-card__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;      /* এখানে কোনো distortion হবে না, শুধু crop হবে */
+  object-position: center;
+}
+
+/* বড় কার্ড বাম পাশে দুই রো স্প্যান করবে */
+.lh-story-card--large {
+  grid-row: span 2;
+}
+
+/* ---- Overlay ---- */
+.lh-story-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 24px 24px;
+  color: #ffffff;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05) 20%,
+    rgba(0, 0, 0, 0.65) 80%
+  );
+}
+/* Allow clicks to pass through the overlay to the image link underneath,
+   but keep interactive children (category pill and title link) clickable. */
+.lh-story-card__overlay {
+  pointer-events: none;
+}
+.lh-story-card__overlay a,
+.lh-story-card__overlay .lh-story-tag,
+.lh-story-card__overlay .lh-story-title a {
+  pointer-events: auto;
+}
+
+/* ---- Tag pill ---- */
+.lh-story-tag {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+/* Place category pill at top-left of featured story cards */
+.lh-story-card .lh-story-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  align-self: initial;
+  margin: 0;
+  transform: none;
+  z-index: 30;
+}
+
+@media (max-width: 600px) {
+  .lh-story-card .lh-story-tag {
+    top: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+}
+
+.lh-story-tag__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #ff6633;
+}
+
+/* চাইলে category অনুযায়ী আলাদা রঙ */
+.lh-story-tag--travel .lh-story-tag__dot {
+  background: #ff5a32;
+}
+.lh-story-tag--garden .lh-story-tag__dot {
+  background: #24c47b;
+}
+.lh-story-tag--gear .lh-story-tag__dot {
+  background: #ffb100;
+}
+
+/* ---- Titles ---- */
+.lh-story-title {
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.lh-story-title--large {
+  font-size: 30px;
+}
+
+/* Ensure story titles sit at the bottom of the overlay */
+.lh-story-card__overlay .lh-story-title {
+  margin-top: auto;
+}
+
+/* ---- Hover effect ---- */
+.lh-story-card:hover .lh-story-card__image {
+  transform: scale(1.03);
+  transition: transform 0.35s ease;
+}
+
+.lh-story-card:hover .lh-story-card__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 20%,
+    rgba(0, 0, 0, 0.75) 80%
+  );
+}
+
+
+
+
+/* ===================================== 
+  MORE STORIES 
+========================================= */
+
+.lh-more-stories {
+  padding: 15px 0px 20px;
+}
+
+.lh-ms-heading {
+  text-align: center;
+  font-size: 26px;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: var(--ms-text);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.lh-ms-heading::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: var(--ms-pink);
+  display: block;
+  margin: 14px auto 0;
+  border-radius: 999px;
+}
+
+.lh-ms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.lh-ms-card {
+  background: #ffffff;
+  /* border-radius: 14px; */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lh-ms-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.lh-ms-image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.lh-ms-image-wrap img {
+  width: 100%;
+  display: block;
+  height: 260px;
+  object-fit: cover;
+}
+
+.lh-ms-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 4px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: var(--ms-pink);
+  color: #fff;
+}
+
+.lh-ms-tag--orange {
+	background: #ff6a3d;
+	color: #fff !important;
+}
+.lh-ms-tag--purple {
+  background: #8b5cf6;
+}
+.lh-ms-tag--green {
+  background: #16a34a;
+}
+.lh-ms-tag--blue {
+  background: #2563eb;
+}
+
+.lh-ms-body {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lh-ms-title {
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--ms-text);
+  font-weight: 700;
+}
+
+.lh-ms-meta {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ms-muted);
+}
+
+.lh-ms-excerpt {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555555;
+}
+
+.lh-ms-load-more {
+  display: inline-block;
+  margin: 40px auto 0;
+  padding: 12px 32px;
+  border-radius: 999px;
+  border: none;
+  background: #005a87;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: block;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.lh-ms-load-more:hover {
+	background: #FF6A3D;
+	transform: translateY(-1px);
+}
+
+
+/* ==================================
+    Footer layout wrapper 
+  ===================================*/
+
+
+/* Common container */
+.lh-site-footer {
+  margin-top: 40px;
+  background: #0b0c10;
+  color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+}
+
+.lh-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 16px;
+}
+
+/* ========== Secondary footer ========== */
+
+.lh-footer-secondary {
+  border-top: 1px solid rgb(232, 232, 232);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f4f4f4;
+}
+
+.lh-footer-secondary-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* secondary footer menu */
+.lh-footer-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.lh-footer-menu a {
+  color: #d5d9e1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.lh-footer-menu a:hover {
+  color: #ffffff;
+}
+
+/* iframe area */
+.lh-footer-iframe-wrap {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* iframe পুরো width নেবে */
+.lh-footer-iframe-wrap iframe {
+  display: block;
+  width: 100%;
+  min-height: 120px; /* দরকার মতো height বদলাও */
+  border: none;
+  height: 310px;
+}
+
+/* ========== Primary footer ========== */
+
+.lh-footer-primary {
+  background: #07080c;
+}
+
+.lh-footer-primary-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lh-footer-copy {
+  color: #9ca3b5;
+  font-size: 15px;
+}
+
+.lh-footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.lh-footer-legal a {
+  color: #e5e7f0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.lh-footer-legal a:hover {
+  text-decoration: underline;
+}
+
+.lh-footer-separator {
+  color: #6b7280;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*========================================
+    Blog Single Page Design
+===========================================*/
+
+.lh-main-layout {
+	display: flex;
+	gap: .5rem;
+	align-items: flex-start;
+	max-width: 1320px;
+	margin: 1.5rem auto;
+}
+
+.lh-main-post-content {
+  flex: 2;
+}
+
+aside.lh-sidebar {
+  flex: 1;
+  position: sticky;
+  top: 1rem;
+}
+
+/* ====== Article ====== */
+/* Card – no shadow, only border + top accent */
+.lh-article-card {
+  background: #ffffffcc;
+  backdrop-filter: blur(4px);
+  /* border-radius: 16px; */
+  padding: 1.6rem 1.6rem 1.8rem;
+  border: 1px solid #e5e7eb;
+  border-top: 3px solid #e6e6e6;
+  margin-bottom: 1.5rem;
+}
+
+.lh-article-meta {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.lh-article-title {
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+}
+
+.lh-article-cover {
+  /* border-radius: 12px; */
+  overflow: hidden;
+  margin: 1rem 0 1.25rem;
+  height: 400px;
+}
+
+.lh-article-cover img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ============================================
+   ARTICLE BODY - Content-specific styles
+   Isolated from .entry-content Gutenberg blocks
+   ============================================ */
+
+.lh-article-body {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #393939;
+}
+
+/* CRITICAL: Reset all .entry-content children to WordPress defaults
+   .entry-content is used by Gutenberg, so we preserve its hierarchy */
+.lh-article-body.entry-content > p {
+	margin-bottom: 1em;
+	font-size: 1em;
+	line-height: 1.6;
+	color: inherit;
+}
+
+.lh-article-body.entry-content > h1 {
+  margin: 0.67em 0 0.33em 0;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.lh-article-body.entry-content > h2 {
+  margin: 0.83em 0 0.33em 0;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.lh-article-body.entry-content > h3 {
+  margin: 1em 0 0.33em 0;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.lh-article-body.entry-content > h4 {
+  margin: 1.33em 0 0.33em 0;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+.lh-article-body.entry-content > h5 {
+  margin: 1.67em 0 0.33em 0;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.lh-article-body.entry-content > h6 {
+  margin: 2.33em 0 0.33em 0;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+/* Allow padding-left for proper list rendering */
+.lh-article-body.entry-content > ul,
+.lh-article-body.entry-content > ol {
+	margin: 0 0 1em 1.5em;
+	padding: 0;
+	list-style-position: outside;
+}
+
+blockquote {
+  border-left: 4px solid #da0000;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #444444;
+  background: #dfdfdf;
+  border-radius: 0 10px 10px 0;
+}
+
+/* Gutenberg blockquote override - keep consistent with above but respect block colors */
+.lh-article-body.entry-content blockquote {
+  border-left: 4px solid #999;
+  padding: 1em 1.5em;
+  margin: 1em 0;
+  font-style: italic;
+  color: #555;
+  background: transparent;
+  border-radius: 0;
+}
+
+/* ====== Related Posts ====== */
+.lh-related-section {
+  background: #ffffffcc;
+  /* border-radius: 16px; */
+  padding: 1.4rem 1.6rem 1.6rem;
+  border: 1px solid #e5e7eb;
+  border-top: 3px solid #dfdfdf;
+}
+
+.lh-section-title {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.lh-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.lh-related-card {
+	/* border-radius: 12px; */
+	background: #f9fafb;
+	padding: 0.8rem;
+	cursor: pointer;
+	border: 1px solid #e1e1e1;
+	transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.lh-related-card:hover {
+  border-color: #bfdbfe;
+  transform: translateY(-2px);
+  background: #eff6ff;
+}
+
+.lh-related-thumb {
+  /* border-radius: 10px; */
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+  /* background: #e5e5e5; */
+}
+
+.lh-related-thumb img {
+	width: 100%;
+	height: 100%;
+}
+
+.lh-related-card-title {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.lh-related-card-meta {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.lh-related-desc {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+/* ====== Sidebar ====== */
+/* Sidebar cards – flat with border + subtle accent */
+.lh-sidebar-card {
+  background: #ffffffcc;
+  /* border-radius: 16px; */
+  padding: 1.2rem 1.3rem 1.35rem;
+  border: 1px solid #e5e7eb;
+}
+
+.lh-sidebar-card + .lh-sidebar-card {
+  margin-top: 1.1rem;
+}
+
+.lh-sidebar-title {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+/* --- Tabs (Popular / Recent) --- */
+.lh-tab-wrapper {
+  position: relative;
+}
+
+.lh-tab-input {
+  display: none;
+}
+
+.lh-tab-labels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* border-radius: 999px; */
+  background: #f3f4f6;
+  padding: 0.15rem;
+  margin-bottom: 0.8rem;
+}
+
+.lh-tab-label {
+	text-align: center;
+	font-size: 0.85rem;
+	padding: 0.75rem 0.2rem;
+	/* border-radius: 999px; */
+	cursor: pointer;
+	transition: background 0.2s ease, color 0.2s ease;
+	user-select: none;
+	text-transform: uppercase;
+}
+/* Active tab styles */
+#tab-popular:checked ~ .lh-tab-labels label[for="tab-popular"],
+#tab-recent:checked  ~ .lh-tab-labels label[for="tab-recent"] {
+  background: #16416F;
+  color: #fff;
+}
+
+.lh-tab-panels {
+  margin-top: 0.3rem;
+}
+
+.lh-tab-panel {
+  display: none;
+  animation: fadeIn 0.22s ease-in-out;
+}
+
+#tab-popular:checked ~ .lh-tab-panels .lh-panel-popular {
+  display: block;
+}
+
+#tab-recent:checked ~ .lh-tab-panels .lh-panel-recent {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lh-post-mini {
+	display: flex;
+	gap: 0.6rem;
+	margin-bottom: 0.7rem;
+	border-bottom: dashed 1px #ddd;
+	padding-bottom: 10px;
+}
+
+.lh-post-mini:last-child{
+  border-bottom: none;
+}
+
+.lh-post-mini-thumb {
+  flex: 0 0 60px;
+  /* border-radius: 8px; */
+  overflow: hidden;
+  background: #e5e5e5;
+}
+
+.lh-post-mini-thumb img {
+	width: 100%;
+	height: 100%;
+}
+
+.lh-post-mini-body {
+  flex: 1;
+}
+
+.lh-post-mini-title {
+	/* font-size: 15px; */
+	/* font-weight: 600; */
+	margin-bottom: 0.2rem;
+	line-height: 22px;
+	/* color: #3f3f3f; */
+}
+.lh-post-mini-meta {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* --- Categories (vertical list with count) --- */
+.lh-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.lh-category-item {
+  padding: 0.45rem 0.8rem;
+  border-radius: unset;
+  background: #f9fafb;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.lh-category-item:hover {
+  background: #eef2ff;
+  border-color: #a5b4fc;
+  transform: translateY(-1px);
+}
+
+.lh-category-name {
+  font-weight: 500;
+}
+
+.lh-category-count {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* ====== Footer ====== */
+
+
+/* =============================== 
+Responsive 
+================================== */
+
+/* Breakpoints অনুযায়ী max-width */
+@media (min-width: 576px) {
+  .lh-container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .lh-container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .lh-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .lh-container {
+    max-width: 1320px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .lh-container {
+    max-width: 1320px;
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+  .lh-header-inner {
+    gap: 10px;
+  }
+  .lh-main-nav ul {
+    gap: 18px;
+  }
+  .lh-logo {
+    font-size: 22px;
+  }
+  .lh-newsletter-btn {
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+  .lh-social-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lh-header-inner {
+    align-items: center;
+    padding: 10px 10px;
+  }
+
+  .lh-nav-toggle-label {
+    display: block;
+    cursor: pointer;
+    width: 28px;
+    height: 20px;
+    position: relative;
+  }
+
+  /* mobile এ main menu collapse হবে */
+  .lh-main-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    display: none;             /* by default hide */
+    width: 100%;
+  }
+  .lh-nav-toggle:checked ~ .lh-main-nav {
+    display: block;
+  }
+
+.lh-main-nav ul {
+	padding: 10px 16px 14px;
+	display: block;
+}
+
+.lh-main-nav a, .lh-main-nav label.lh-nav-link-label {
+	font-size: 13px;
+	letter-spacing: 0.08em;
+	display: block;
+	padding: 12px 0px;
+	border-bottom: dashed 1px #d0d0d0;
+	text-decoration: none;
+}
+
+
+/* last child er border-bottom off */
+    .lh-main-nav ul li:last-child a,
+    .lh-main-nav ul li:last-child .lh-nav-link-label {
+        border-bottom: none;
+    }
+
+  /* mobile submenu */
+  .lh-has-submenu {
+    position: relative;
+      width: 100%;
+  }
+
+  .lh-submenu {
+    position: absolute;
+    display: none;
+    padding: 0;
+    top: 40px;
+    background: #fff;
+    width: 100%;
+    border: none;
+    left: 0px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  /* submenu visible when checkbox checked */
+  .lh-submenu-toggle:checked + .lh-nav-link-label + .lh-submenu {
+      display: block !important;
+  }
+
+  .lh-submenu li {
+      margin: 0;
+      padding: 0;
+  }
+
+  .lh-submenu li a {
+      display: block;
+      width: 100%;
+      padding: 12px 16px;
+      border-bottom: 1px dashed #ddd !important;
+  }
+
+  .lh-submenu li:last-child a {
+      border-bottom: none !important;
+  }
+
+  .lh-header-right {
+    gap: 8px;
+  }
+
+  .lh-newsletter-btn .label-text {
+    display: none;
+  }
+
+  .lh-header-right {
+    display: none;
+  }
+
+
+    .lh-header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;       /* Ensure left → right arrangement */
+  }
+
+    /* Logo Left */
+    .lh-logo {
+        order: 1;
+    }
+
+    /* Hamburger Right */
+    .lh-nav-toggle,
+    .lh-nav-toggle-label {
+        order: 2;
+        margin-left: auto;        /* Push it to the right */
+    }
+
+    /* Hide right section on mobile (optional) */
+    .lh-header-right {
+        display: none;
+    }
+
+    /* Navigation menu drops down */
+    .lh-main-nav {
+        width: 100%;
+    }
+
+
+
+
+}
+
+@media (max-width: 480px) {
+  .lh-header-right {
+    gap: 4px;
+  }
+  .lh-social-circle {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+  .lh-logo {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1220px) {
+  .lh-header-inner {
+    align-items: center;
+    padding: 10px 10px;
+  }
+}
+
+/* DESKTOP: hover submenu */
+@media (min-width: 769px) {
+  .lh-has-submenu .lh-submenu-toggle:checked + .lh-nav-link-label + .lh-submenu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    pointer-events: none;
+  }
+
+  .lh-has-submenu:hover .lh-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* ল্যাপটপ/ছোট ডেস্কটপ */
+@media (max-width: 1024px) {
+  .lh-featured-grid {
+    grid-template-columns: 1.5fr 1fr;
+  }
+  .lh-story-title--large {
+    font-size: 32px;
+  }
+}
+
+/* ট্যাবলেট */
+@media (max-width: 900px) {
+  .lh-featured-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .lh-story-card--large {
+    grid-row: auto;
+  }
+  .lh-story-card {
+    aspect-ratio: 16 / 9;
+  }
+  .lh-story-title--large {
+    font-size: 30px;
+  }
+  .lh-story-title {
+    font-size: 20px;
+  }
+}
+
+/* মোবাইল */
+@media (max-width: 600px) {
+  .lh-featured-section {
+    margin-top: 20px;
+  }
+
+  .lh-featured-grid {
+    gap: 12px;
+  }
+
+  .lh-story-card {
+    border-radius: unset;
+  }
+
+  .lh-story-card__overlay {
+    padding: 16px 16px 18px;
+  }
+
+  .lh-story-tag {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  .lh-story-title--large {
+    font-size: 22px;
+  }
+
+  .lh-story-title {
+    font-size: 18px;
+  }
+}
+
+/* ===== MORE STORIES RESPONSIVE ===== */
+
+/* @media (max-width: 991px) {
+  .lh-ms-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .lh-ms-heading {
+    font-size: 24px;
+  }
+  .lh-ms-image-wrap img {
+    height: 230px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .lh-more-stories {
+    padding: 30px 0px 30px;
+  }
+  .lh-ms-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .lh-ms-heading {
+    font-size: 22px;
+    margin-bottom: 28px;
+  }
+  .lh-ms-body {
+    padding: 16px 16px 18px;
+  }
+  .lh-ms-title {
+    font-size: 17px;
+  }
+  .lh-ms-excerpt {
+    font-size: 13px;
+  }
+} */
+
+
+
+
+
+/* ============================================
+   MOBILE LIST VIEW FOR MORE STORIES (≤ 768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  /* Grid থেকে list view */
+  .lh-ms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* প্রতিটি কার্ড list-row style */
+  .lh-ms-card {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    padding: 10px;
+    border-radius: unset;
+    align-items: flex-start;
+  }
+
+  /* Image fixed small rectangle left */
+  .lh-ms-image-wrap {
+    width: 120px;
+    height: 100px;
+    border-radius: unset;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .lh-ms-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Tag ছোট করে image-এর top-left এ রাখবো */
+  .lh-ms-tag {
+    top: 6px;
+    left: 6px;
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+
+  /* Body right side */
+  .lh-ms-body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lh-ms-title {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .lh-ms-meta {
+    font-size: 10px;
+    color: #777;
+    display: none;
+  }
+
+.lh-ms-excerpt {
+	font-size: 13px;
+	color: #444;
+	line-height: 1.45;
+	display: none;
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER RESPONSIVE */
+
+/* Tablet & down */
+@media (max-width: 768px) {
+  .lh-footer-secondary-inner {
+    gap: 12px;
+  }
+
+  .lh-footer-primary-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .lh-footer-container {
+    padding-inline: 12px;
+  }
+
+  .lh-footer-menu {
+    gap: 8px 14px;
+  }
+
+  .lh-footer-copy,
+  .lh-footer-legal {
+    font-size: 12px;
+  }
+
+  .lh-footer-primary-inner {
+    align-items: center;
+    text-align: center;
+  }
+
+  .lh-footer-iframe-wrap iframe {
+    height: 565px;
+  }
+}
+
+
+
+
+/* ===========================
+   DESKTOP fixed heights
+   =========================== */
+@media (min-width: 901px) {
+  /* এখানে height control হচ্ছে – সব image একই height-এর card পাবে */
+  .lh-story-card--large {
+    height: 480px;  /* বড় main card height */
+  }
+
+  .lh-story-card--small {
+    height: 230px;  /* ডানদিকের দুই ছোট কার্ডের height */
+  }
+}
+
+
+
+@media (max-width: 900px) {
+  .lh-main-layout {
+    flex-direction: column;
+  }
+
+  aside.lh-sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .lh-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .lh-header-nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .lh-header-nav a {
+    margin-left: 0;
+    margin-right: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .lh-article-title {
+    font-size: 1.45rem;
+  }
+
+  .lh-related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lh-article-cover {
+    /* border-radius: 12px; */
+    overflow: hidden;
+    margin: 1rem 0 1.25rem;
+    height: 200px;
+  }
+
+  .lh-article-card {
+	  border-radius: unset;
+    padding: 1rem 1rem 1rem;
+  }
+
+
+  .lh-related-section {
+    padding: 1.4rem 1rem 1.6rem;
+  }
+
+  .lh-sidebar-card {
+    border-radius: unset;
+  }
+}
+
+
+
+.lh-category-header {
+	background: #1a1a1a;
+	padding: 2rem 2rem 3rem;
+	text-align: center;
+	margin-bottom: 1.5rem;
+}
+
+.lh-posts-grid {
+
+	gap: 1rem !important;
+}
+
+.lh-category-item{
+	padding: .75rem 10px !important;
+	font-weight: 500 !important;
+}
+
+.lh-category-name {
+	font-weight: normal !important;
+}
+
+.lh-post-content-wrapper {
+	padding: 1rem 0 !important;
+}
+
+.lh-post-content-wrapper {
+	padding: 1rem 0 0 0;
+}
+
+.lh-related-desc {
+	margin-bottom: 0 !important;
+}
+
+.prev.page-numbers {
+	padding: 10px 20px;
+	background: black;
+	color: #fff;
+	transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+
+.prev.page-numbers:hover {
+	background: transparent;
+	border: 1px solid #000;
+	color: #000;
+}
+
+
+.page-numbers {
+	padding: 10px 20px;
+	background: #ddd;
+}
+
+.next.page-numbers {
+    padding: 10px 20px;
+    background: black;
+    color: #fff;
+transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+
+.next.page-numbers:hover {
+    background: transparent;
+    border: 1px solid #000;
+    color: #000;
+}
+
+
+
+ @media (max-width: 600px) {
+	 
+	 .lh-main-nav .lh-menu li {
+	position: relative;
+	width: 100%;
+}
+	 
+	 .lh-submenu-toggle {
+	left: 86% !important;
+}
+	 
+}
+
+
+/* ========================================
+   SOCIAL ICONS STYLES
+   ======================================== */
+
+/* Social Icons Container */
+.lh-socials {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Alignment */
+.lh-socials-align-left {
+    justify-content: flex-start;
+}
+
+.lh-socials-align-center {
+    justify-content: center;
+}
+
+.lh-socials-align-right {
+    justify-content: flex-end;
+}
+
+/* Social Icon Base */
+.lh-social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* Size variations */
+.lh-socials-small .lh-social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.lh-socials-medium .lh-social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.lh-socials-large .lh-social-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* Style variations */
+.lh-socials-circle .lh-social-icon {
+    border-radius: 50%;
+}
+
+.lh-socials-square .lh-social-icon {
+    border-radius: 0;
+}
+
+.lh-socials-simple .lh-social-icon {
+    background: transparent !important;
+    border: 2px solid currentColor;
+}
+
+.lh-socials-rounded .lh-social-icon {
+    border-radius: 8px;
+}
+
+/* Hover effects */
+.lh-social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 0.9;
+}
+
+/* Platform-specific hover colors */
+.lh-social-facebook:hover { background-color: #1877f2 !important; }
+.lh-social-twitter:hover { background-color: #1da1f2 !important; }
+.lh-social-instagram:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important; }
+.lh-social-linkedin:hover { background-color: #0a66c2 !important; }
+.lh-social-youtube:hover { background-color: #ff0000 !important; }
+.lh-social-pinterest:hover { background-color: #bd081c !important; }
+.lh-social-tiktok:hover { background-color: #000000 !important; }
+.lh-social-whatsapp:hover { background-color: #25d366 !important; }
+.lh-social-telegram:hover { background-color: #0088cc !important; }
+.lh-social-snapchat:hover { background-color: #fffc00 !important; color: #000 !important; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .lh-socials {
+        gap: 8px;
+    }
+    
+    .lh-socials-medium .lh-social-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+}
+
+
+/* Customizer Image Select Control */
+.social-icon-preview {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f1f1f1;
+    border-radius: 4px;
+    text-align: center;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon-preview .selected-icon-preview {
+    max-width: 48px;
+    max-height: 48px;
+    border-radius: 4px;
+}
+
+.social-icon-preview .no-icon-selected {
+    color: #999;
+    font-style: italic;
+}
+
+.customize-control-image_select .button {
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.customize-control-image_select .social-icon-remove {
+    background: #dc3232;
+    border-color: #dc3232;
+    color: white;
+}
+
+.customize-control-image_select .social-icon-remove:hover {
+    background: #a00;
+    border-color: #a00;
+}
+
+/* Social media icons preview in customizer */
+.social-icons-preview-area {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+}
+
+.social-icons-preview-area h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.social-icons-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ============================================
+   GUTENBERG BLOCK STYLES - FRONTEND
+   Ensure blocks render exactly as in the editor
+============================================ */
+
+/* .entry-content wrapper to isolate block styles */
+.entry-content {
+    /* Reset aggressive theme styles inside content */
+    /* Allow block library styles to work properly */
+}
+
+/* Protect block styles from theme overrides */
+.entry-content > * {
+    /* Override overly specific theme rules */
+    max-width: 100%;
+}
+
+/* ===== Block: Paragraph ===== */
+.entry-content p {
+    margin-bottom: 1em;  /* Reset from 0.9rem - use standard em units */
+    font-size: 1em;      /* Reset from 0.98rem - use inheriting size */
+    line-height: 1.6;    /* Better default from 24px for all sizes */
+    color: inherit;      /* Don't force color - respect block settings */
+}
+
+/* ===== Block: Heading ===== */
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    color: inherit;  /* Respect block color settings */
+}
+
+.entry-content h1 { font-size: 2.5em; }
+.entry-content h2 { font-size: 2em; }
+.entry-content h3 { font-size: 1.5em; }
+.entry-content h4 { font-size: 1.25em; }
+.entry-content h5 { font-size: 1.1em; }
+.entry-content h6 { font-size: 1em; }
+
+/* ===== Block: List ===== */
+.entry-content ul,
+.entry-content ol {
+  margin-bottom: 1em;
+  margin-left: 1.5em;
+  margin-top: 0;
+  padding-left: 1.5em;
+  list-style-position: outside;
+  list-style-type: disc;
+}
+
+.entry-content ol {
+  list-style-type: decimal;
+}
+
+.entry-content li {
+    margin-bottom: 0.5em;
+    line-height: 1.6;
+    display: list-item;
+}
+
+/* Nested lists use a different marker style to indicate hierarchy */
+.entry-content ul ul,
+.entry-content ol ol,
+.entry-content ul ol,
+.entry-content ol ul {
+  padding-left: 1.25em;
+  margin-left: 0;
+  list-style-type: circle;
+}
+
+.entry-content ol ul,
+.entry-content ol ol ol,
+.entry-content ul ol ul {
+  list-style-type: square;
+}
+
+/* ===== Block: Quote/Blockquote ===== */
+.entry-content blockquote {
+    border-left: 4px solid #999;
+    padding: 1em 1.5em;
+    margin: 1em 0;
+    font-style: italic;
+    color: #555;
+    background: transparent;  /* Reset theme blockquote bg */
+    border-radius: 0;          /* Reset theme border-radius */
+}
+
+/* ===== Block: Image alignment & wide/full support ===== */
+.entry-content .wp-block-image {
+  margin: 0 0 1em;
+}
+
+.entry-content .wp-block-image.alignleft {
+  float: left;
+  margin-right: 1.25em;
+  margin-bottom: 1em;
+  max-width: 50%;
+}
+
+.entry-content .wp-block-image.alignright {
+  float: right;
+  margin-left: 1.25em;
+  margin-bottom: 1em;
+  max-width: 50%;
+}
+
+.entry-content .wp-block-image.alignwide {
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  max-width: none;
+}
+
+.entry-content .wp-block-image.alignfull {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  max-width: none;
+}
+
+/* Ensure images are responsive */
+.entry-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wp-block-quote {
+    margin: 1em 0;
+    padding: 1em 1.5em;
+    border-left: 4px solid #999;
+    background: transparent;
+}
+
+.wp-block-quote p {
+    margin-bottom: 0.5em;
+}
+
+.wp-block-quote cite {
+    font-size: 0.875em;
+    font-style: normal;
+    color: #666;
+}
+
+/* ===== Block: Image ===== */
+.entry-content img,
+.wp-block-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.wp-block-image {
+    margin: 1em 0;
+}
+
+.wp-block-image.aligncenter {
+    text-align: center;
+}
+
+.wp-block-image.alignleft {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.wp-block-image.alignright {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+.wp-block-image.alignfull {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+}
+
+.wp-block-image.alignwide {
+    margin-left: -60px;
+    margin-right: -60px;
+    width: calc(100% + 120px);
+}
+
+/* ===== Block: Gallery ===== */
+.wp-block-gallery {
+    margin: 1em 0;
+}
+
+.wp-block-gallery .blocks-gallery-grid {
+    display: grid;
+    gap: 0.5em;
+}
+
+/* ===== Block: Button ===== */
+.wp-block-button {
+    margin: 1em 0;
+}
+
+.wp-block-button__link {
+    background-color: #32373c;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 0.6em 1.2em;
+    text-decoration: none;
+}
+
+.wp-block-button__link:hover {
+    opacity: 0.9;
+}
+
+/* ===== Block: Separator ===== */
+.wp-block-separator {
+    background-color: #e5e5e5;
+    border: none;
+    height: 2px;
+    margin: 2em 0;
+}
+
+.wp-block-separator.is-style-dots {
+    background-color: transparent;
+    height: auto;
+    text-align: center;
+}
+
+/* ===== Block: Code ===== */
+.wp-block-code {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 1em 0;
+    overflow-x: auto;
+    padding: 1em;
+}
+
+.wp-block-code code {
+    background: transparent;
+    color: #333;
+    font-size: inherit;
+}
+
+/* ===== Block: Preformatted ===== */
+.wp-block-preformatted {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    font-family: 'Courier New', monospace;
+    margin: 1em 0;
+    overflow-x: auto;
+    padding: 1em;
+    white-space: pre-wrap;
+}
+
+/* ===== Block: Table ===== */
+.wp-block-table {
+    margin: 1em 0;
+}
+
+.entry-content table,
+.wp-block-table table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+}
+
+.entry-content td,
+.entry-content th,
+.wp-block-table td,
+.wp-block-table th {
+    border: 1px solid #ddd;
+    padding: 0.75em;
+    text-align: left;
+}
+
+.entry-content th,
+.wp-block-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+/* ===== Block: List (WordPress native) ===== */
+.wp-block-list {
+    margin-bottom: 1em;
+    margin-left: 1.5em;
+    padding: 0;
+}
+
+.wp-block-list li {
+    margin-bottom: 0.5em;
+    line-height: 1.6;
+}
+
+/* ===== Block: Columns ===== */
+.wp-block-columns {
+    display: grid;
+    gap: 1em;
+    margin: 1em 0;
+}
+
+/* ===== Block: Group ===== */
+.wp-block-group {
+    margin: 1em 0;
+}
+
+/* ===== Block: Cover ===== */
+.wp-block-cover {
+    margin: 1em 0;
+    min-height: 430px;
+}
+
+/* ===== Block: Media Text ===== */
+.wp-block-media-text {
+    display: flex;
+    margin: 1em 0;
+    gap: 1em;
+    align-items: center;
+}
+
+/* ===== Block: Embed ===== */
+.wp-block-embed {
+    margin: 1em 0;
+}
+
+.wp-block-embed iframe {
+    max-width: 100%;
+}
+
+/* ===== Wide and Full Alignment ===== */
+.wp-block-image.alignwide,
+.wp-block-gallery.alignwide,
+.wp-block-embed.alignwide {
+    margin-left: -60px;
+    margin-right: -60px;
+    width: calc(100% + 120px);
+}
+
+.wp-block-image.alignfull,
+.wp-block-gallery.alignfull,
+.wp-block-embed.alignfull {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+}
+
+/* ===== Text Formatting Blocks ===== */
+.has-drop-cap:first-letter {
+    float: left;
+    font-size: 8.4em;
+    font-weight: 700;
+    line-height: 0.6;
+    margin-right: 0.1em;
+    margin-top: 0.1em;
+}
+
+/* ===== Alignment Classes ===== */
+.entry-content .aligncenter {
+    text-align: center;
+}
+
+.entry-content .alignleft {
+    float: left;
+    margin-right: 1em;
+}
+
+.entry-content .alignright {
+    float: right;
+    margin-left: 1em;
+}
+
+/* ===== Link Styles in Content ===== */
+.entry-content a {
+    color: #0073aa;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.entry-content a:hover {
+    color: #005a87;
+}
+
+/* ===== Archive Grid Styles ===== */
+.lh-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.lh-category-header {
+    background: #1a1a1a;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+}
+
+.lh-category-title {
+    text-transform: uppercase;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+}
+
+.lh-breadcrumb {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lh-related-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+
+.lh-related-thumb {
+    margin: 0;
+/*     height: 280px; */
+    overflow: hidden;
+}
+
+.lh-post-content-wrapper {
+    padding: 1.5rem;
+}
+
+.lh-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lh-related-card-title {
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+}
+
+.lh-related-card-title a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.lh-related-card-title a:hover {
+	color: #0073aa;
+	text-decoration: none;
+}
+
+.lh-related-desc {
+    color: #6b7280;
+    line-height: 1.7;
+    font-size: 0.938rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Mobile Responsive - Single Column */
+@media (max-width: 768px) {
+    .lh-posts-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .lh-category-header {
+        padding: 2.5rem 1.5rem 2rem;
+    }
+
+    .lh-category-title {
+        font-size: 1.75rem;
+    }
+
+    .lh-breadcrumb {
+        font-size: 0.75rem;
+    }
+
+    .lh-related-thumb {
+        height: 220px;
+    }
+
+    .lh-post-content-wrapper {
+        padding: 1.25rem;
+    }
+
+    .lh-related-card-title a {
+        font-size: 1.125rem;
+    }
+
+    .lh-related-desc {
+        font-size: 0.875rem;
+    }
+
+    .lh-main-layout {
+        display: block;
+    }
+
+    .lh-sidebar {
+        margin-top: 2rem;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .lh-posts-grid {
+        gap: 1.5rem;
+    }
+
+    .lh-category-header {
+        padding: 3rem 1.5rem 2.5rem;
+    }
+
+    .lh-category-title {
+        font-size: 2rem;
+    }
+}
+
+
+
+
+/* ===== Responsive: Ensure blocks stay responsive ===== */
+@media (max-width: 768px) {
+    .entry-content {
+        /* Adjust content on tablets */
+    }
+    
+    .wp-block-image.alignleft,
+    .wp-block-image.alignright {
+        float: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .wp-block-columns {
+        grid-template-columns: 1fr !important;
+    }
+	
+	
+}
+
+
+
+.lh-footer-inner{
+  display:flex;
+  flex-direction:column;
+}
+
+
+.lh-footer-copy{ order: 1; }
+.lh-footer-legal{ order: 2; }
+
+
+@media (max-width:768px){
+  .lh-footer-legal{ order: 1; }
+  .lh-footer-copy{ order: 2; }
+}
+
+
