@@ -1,5 +1,5 @@
 === Link Higher ===
-Contributors: yourname
+Contributors: MD Najmus Shadat
 Tags: blog, news, custom-logo, responsive, accessibility-ready
 Requires at least: 5.6
 Tested up to: 6.5
@@ -34,3 +34,4 @@ Initial release.
 == Notes for Theme Reviewers ==
 - The theme includes an optional remote iframe for a "partner footer" that is disabled by default. This is intentional so the theme follows WordPress.org guidelines regarding remote content.
 - Please add a `screenshot.png` (recommended 1200x900) to the theme root for the reviewer preview.
+
